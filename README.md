@@ -144,6 +144,14 @@ Found a genuinely flaky test in the wild that Flakerad misdiagnosed? That's the 
 
 <br/>
 
+## repository & bugs
+
+To see the source code, inspect run data, or to find bugs, visit the repository:
+- **Repository**: [https://github.com/AyushDubey23/flakerad](https://github.com/AyushDubey23/flakerad)
+- **Portfolio**: [ayushdubey23.vercel.app](https://ayushdubey23.vercel.app)
+
+<br/>
+
 ## license
 
 MIT — see [LICENSE](LICENSE).
@@ -153,3 +161,4 @@ MIT — see [LICENSE](LICENSE).
 <div align="center">
 made for the suspicious
 </div>
+
