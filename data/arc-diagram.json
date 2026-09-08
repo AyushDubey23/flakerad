@@ -1,0 +1,104 @@
+{
+  "tracks": [
+    {
+      "id": "baseline",
+      "label": "run 1 / baseline"
+    },
+    {
+      "id": "seed",
+      "label": "run 2 / fixed seed"
+    },
+    {
+      "id": "clock",
+      "label": "run 3 / frozen clock"
+    },
+    {
+      "id": "order",
+      "label": "run 4 / isolated order"
+    }
+  ],
+  "points": [
+    {
+      "id": "b1",
+      "track": "baseline",
+      "x": 1,
+      "status": "fail"
+    },
+    {
+      "id": "b2",
+      "track": "baseline",
+      "x": 2,
+      "status": "fail"
+    },
+    {
+      "id": "b3",
+      "track": "baseline",
+      "x": 3,
+      "status": "fail"
+    },
+    {
+      "id": "b4",
+      "track": "baseline",
+      "x": 4,
+      "status": "fail"
+    },
+    {
+      "id": "s1",
+      "track": "seed",
+      "x": 1.2,
+      "status": "pass"
+    },
+    {
+      "id": "s2",
+      "track": "seed",
+      "x": 2.2,
+      "status": "fail"
+    },
+    {
+      "id": "c1",
+      "track": "clock",
+      "x": 3.1,
+      "status": "pass"
+    },
+    {
+      "id": "c2",
+      "track": "clock",
+      "x": 4.1,
+      "status": "fail"
+    },
+    {
+      "id": "o1",
+      "track": "order",
+      "x": 2.9,
+      "status": "pass"
+    },
+    {
+      "id": "o2",
+      "track": "order",
+      "x": 4.5,
+      "status": "pass"
+    }
+  ],
+  "links": [
+    {
+      "source": "b1",
+      "target": "s1",
+      "color": "#4F9C8C"
+    },
+    {
+      "source": "b2",
+      "target": "o1",
+      "color": "#B8894A"
+    },
+    {
+      "source": "b3",
+      "target": "c1",
+      "color": "#7B7290"
+    },
+    {
+      "source": "b4",
+      "target": "o2",
+      "color": "#EDEBE4"
+    }
+  ]
+}

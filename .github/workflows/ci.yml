@@ -1,0 +1,43 @@
+name: CI & Data Refresh
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  test-and-verify:
+    name: Verify Fixtures, CLI & Web
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.12.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build CLI package
+        run: pnpm --filter flakerad build
+
+      - name: Run Integration Fixtures Test
+        run: pnpm run test:fixtures
+
+      - name: Refresh Data Contracts from Real Fixtures
+        run: pnpm run generate-data
+
+      - name: Build Next.js Web App
+        run: pnpm run build

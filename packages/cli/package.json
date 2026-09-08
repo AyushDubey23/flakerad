@@ -1,0 +1,38 @@
+{
+  "name": "flakerad",
+  "version": "0.1.0",
+  "description": "A controlled diagnostic instrument for flaky tests by Ayush Dubey",
+  "author": "Ayush Dubey",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "flakerad": "./dist/bin.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node -e \"const fs=require('fs'); fs.mkdirSync('dist/injections', {recursive:true}); fs.copyFileSync('src/injections/inject-seed.cjs', 'dist/injections/inject-seed.cjs'); fs.copyFileSync('src/injections/inject-clock.cjs', 'dist/injections/inject-clock.cjs');\"",
+    "dev": "tsc -w -p tsconfig.json",
+    "test": "node dist/scripts/test-fixtures.js"
+  },
+  "dependencies": {
+    "@sinonjs/fake-timers": "^13.0.5",
+    "better-sqlite3": "^11.8.1",
+    "commander": "^13.1.0",
+    "execa": "^9.5.2",
+    "ink": "^5.1.0",
+    "ink-spinner": "^5.0.0",
+    "react": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/sinonjs__fake-timers": "^8.1.5",
+    "typescript": "^5.7.3"
+  }
+}

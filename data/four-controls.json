@@ -1,0 +1,26 @@
+[
+  {
+    "id": "seed",
+    "label": "fixed seed",
+    "description": "same random inputs",
+    "delta": "−31%"
+  },
+  {
+    "id": "clock",
+    "label": "frozen clock",
+    "description": "same time, every run",
+    "delta": "−04%"
+  },
+  {
+    "id": "order",
+    "label": "isolated order",
+    "description": "one test, no neighbors",
+    "delta": "−68%"
+  },
+  {
+    "id": "baseline",
+    "label": "baseline",
+    "description": "the honest first run",
+    "delta": "0%"
+  }
+]
