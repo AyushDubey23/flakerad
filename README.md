@@ -148,7 +148,7 @@ Found a genuinely flaky test in the wild that Flakerad misdiagnosed? That's the 
 
 To see the source code, inspect run data, or to find bugs, visit the repository:
 - **Repository**: [https://github.com/AyushDubey23/flakerad](https://github.com/AyushDubey23/flakerad)
-- **Portfolio**: [ayushdubey23.vercel.app](https://ayushdubey23.vercel.app)
+- **Author**: [Ayush Dubey](https://ayushdubey23.vercel.app)
 
 <br/>
 
