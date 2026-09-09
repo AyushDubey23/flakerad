@@ -47,6 +47,42 @@ if (crypto && crypto.randomUUID) {
   };
 }
 
+// Intercept Module.prototype.require to patch seeded-random libraries (faker, chance)
+try {
+  const Module = require('module');
+  const originalRequire = Module.prototype.require;
+
+  Module.prototype.require = function (id) {
+    const mod = originalRequire.apply(this, arguments);
+
+    if (id === 'faker' || id === '@faker-js/faker') {
+      try {
+        if (mod && mod.faker && typeof mod.faker.seed === 'function') {
+          mod.faker.seed(seedValue);
+        } else if (mod && typeof mod.seed === 'function') {
+          mod.seed(seedValue);
+        }
+      } catch {}
+    } else if (id === 'chance') {
+      try {
+        if (typeof mod === 'function') {
+          const WrappedChance = function (...args) {
+            if (args.length === 0) {
+              return new mod(seedValue);
+            }
+            return new mod(...args);
+          };
+          WrappedChance.prototype = mod.prototype;
+          return WrappedChance;
+        }
+      } catch {}
+    }
+
+    return mod;
+  };
+} catch {}
+
 if (process.env.FLAKERAD_DEBUG) {
   process.stderr.write(`[flakerad] Injected fixed seed PRNG (seed: ${seedValue})\n`);
 }
+

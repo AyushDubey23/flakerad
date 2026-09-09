@@ -22,7 +22,7 @@ export async function initCommand(options: { force?: boolean; cwd?: string } = {
 
   const config: FlakeradConfig = {
     runner,
-    reruns: 10,
+    reruns: 8,
     timeoutMs: 15000,
     fast: false,
     safeMode: false

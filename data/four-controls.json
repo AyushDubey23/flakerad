@@ -3,19 +3,19 @@
     "id": "seed",
     "label": "fixed seed",
     "description": "same random inputs",
-    "delta": "−31%"
+    "delta": "−50%"
   },
   {
     "id": "clock",
     "label": "frozen clock",
     "description": "same time, every run",
-    "delta": "−04%"
+    "delta": "−100%"
   },
   {
     "id": "order",
     "label": "isolated order",
     "description": "one test, no neighbors",
-    "delta": "−68%"
+    "delta": "−100%"
   },
   {
     "id": "baseline",

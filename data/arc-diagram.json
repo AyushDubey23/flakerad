@@ -27,19 +27,19 @@
     {
       "id": "b2",
       "track": "baseline",
-      "x": 2,
+      "x": 2.1,
       "status": "fail"
     },
     {
       "id": "b3",
       "track": "baseline",
-      "x": 3,
+      "x": 3.2,
       "status": "fail"
     },
     {
       "id": "b4",
       "track": "baseline",
-      "x": 4,
+      "x": 4.3,
       "status": "fail"
     },
     {
@@ -57,7 +57,7 @@
     {
       "id": "c1",
       "track": "clock",
-      "x": 3.1,
+      "x": 2.3,
       "status": "pass"
     },
     {
@@ -69,14 +69,14 @@
     {
       "id": "o1",
       "track": "order",
-      "x": 2.9,
+      "x": 3.4,
       "status": "pass"
     },
     {
       "id": "o2",
       "track": "order",
       "x": 4.5,
-      "status": "pass"
+      "status": "fail"
     }
   ],
   "links": [
@@ -87,18 +87,13 @@
     },
     {
       "source": "b2",
-      "target": "o1",
-      "color": "#B8894A"
-    },
-    {
-      "source": "b3",
       "target": "c1",
       "color": "#7B7290"
     },
     {
-      "source": "b4",
-      "target": "o2",
-      "color": "#EDEBE4"
+      "source": "b3",
+      "target": "o1",
+      "color": "#B8894A"
     }
   ]
 }

@@ -10,11 +10,11 @@
     },
     {
       "test_id": "fixture-003",
-      "outcome": "correct"
+      "outcome": "review"
     },
     {
       "test_id": "fixture-004",
-      "outcome": "correct"
+      "outcome": "review"
     }
   ],
   "5": [

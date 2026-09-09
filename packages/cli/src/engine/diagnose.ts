@@ -95,7 +95,7 @@ export async function diagnoseTest(
   options: DiagnoseOptions = {}
 ): Promise<DiagnosisResult> {
   const cwd = options.cwd || process.cwd()
-  let reruns = options.reruns || 10
+  let reruns = options.reruns || 8
   const isSafeMode = Boolean(options.safeMode)
   const isFastMode = Boolean(options.fast)
 

@@ -38,7 +38,7 @@ program
   .alias('diagnose')
   .alias('run')
   .description('Run target test under the four controlled conditions to isolate root cause')
-  .option('-r, --reruns <count>', 'Number of reruns per condition (default: 10)')
+  .option('-r, --reruns <count>', 'Number of reruns per condition (default: 8)')
   .option('--fast', 'Fast mode: fewer reruns with reduced confidence')
   .option('--safe-mode', 'Safe mode: cap reruns at 3 to prevent unsafe side-effects')
   .option('--runner <runner>', 'Explicit test runner (jest, node)')
@@ -65,7 +65,7 @@ program
 program
   .command('ci <testPattern>')
   .description('Run diagnosis with GitHub Actions annotations and CI exit codes')
-  .option('-r, --reruns <count>', 'Number of reruns per condition (default: 10)')
+  .option('-r, --reruns <count>', 'Number of reruns per condition (default: 8)')
   .option('--fast', 'Fast mode (4 reruns)')
   .option('--safe-mode', 'Safe mode (capped at 3 reruns)')
   .option('--strict', 'Exit with code 1 on any detected flake (even if root cause is identified)')

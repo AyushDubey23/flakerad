@@ -28,7 +28,7 @@ flakerad ci ./tests/my-test.spec.ts
 ```
 
 ## Options
-- `-r, --reruns <count>`: Number of reruns per condition (default: 10)
+- `-r, --reruns <count>`: Number of reruns per condition (default: 8)
 - `--fast`: Fast mode (4 reruns, reduced confidence)
 - `--safe-mode`: Capped at 3 reruns to avoid unsafe mutations
 - `--json`: Output structured JSON report

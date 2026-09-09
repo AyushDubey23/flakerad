@@ -38,7 +38,7 @@ export async function diagnoseCommand(
   const isSafe = options.safeMode ?? fileConfig.safeMode ?? false
   let reruns = options.reruns
     ? parseInt(options.reruns, 10)
-    : fileConfig.reruns || (isSafe ? 3 : isFast ? 4 : 10)
+    : fileConfig.reruns || (isSafe ? 3 : isFast ? 4 : 8)
 
   if (isSafe) {
     reruns = Math.min(reruns, 3)

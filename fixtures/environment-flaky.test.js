@@ -8,11 +8,10 @@ const http = require('http')
 
 async function runTest() {
   // Spin up an ephemeral unstable local HTTP service
-  let reqCount = 0
+  const runIndex = parseInt(process.env.FLAKERAD_RUN_INDEX || '1', 10)
   const server = http.createServer((req, res) => {
-    reqCount++
-    // Fails on odd requests (~50% failure rate) simulating upstream endpoint degradation
-    if (reqCount % 2 === 1) {
+    // Fails on odd runs (~50% intermittent failure rate) simulating upstream endpoint degradation
+    if (runIndex % 2 === 1) {
       res.writeHead(503, { 'Content-Type': 'application/json' })
       res.end(JSON.stringify({ error: 'Service Unavailable: upstream database timeout' }))
     } else {

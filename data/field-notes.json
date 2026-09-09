@@ -1,0 +1,90 @@
+[
+  {
+    "id": "001",
+    "test_id": "fixture-001",
+    "name": "random-input",
+    "file": "fixtures/random-input.test.js",
+    "category": "non-deterministic input",
+    "eyebrow": "001 / random input",
+    "title": "Same test, different random.",
+    "summary": "A fixed seed collapsed the failure rate from 50% to 0%. The flakiness is caused by non-deterministic random inputs.",
+    "callout": "Diagnosis: non-deterministic input.",
+    "verdict": "non-deterministic input",
+    "confidence": "95%",
+    "rates": {
+      "baseline": "50%",
+      "seed": "0%",
+      "clock": "88%",
+      "order": "100%"
+    },
+    "failure_rate_delta": "−50%",
+    "total_runs": 8,
+    "timestamp": "2026-09-09T10:30:16.508Z"
+  },
+  {
+    "id": "002",
+    "test_id": "fixture-002",
+    "name": "race-condition",
+    "file": "fixtures/race-condition.test.js",
+    "category": "timing/race condition",
+    "eyebrow": "002 / race condition",
+    "title": "The callback arrived before the assertion.",
+    "summary": "Freezing the clock eliminated failures (100% -> 0%). The flakiness is caused by timing sensitivity or asynchronous race conditions.",
+    "callout": "Diagnosis: timing/race condition.",
+    "verdict": "timing/race condition",
+    "confidence": "95%",
+    "rates": {
+      "baseline": "100%",
+      "seed": "100%",
+      "clock": "0%",
+      "order": "100%"
+    },
+    "failure_rate_delta": "−100%",
+    "total_runs": 8,
+    "timestamp": "2026-09-09T10:30:23.488Z"
+  },
+  {
+    "id": "003",
+    "test_id": "fixture-003",
+    "name": "shared-state-order",
+    "file": "fixtures/shared-state-order.test.js",
+    "category": "test-order/shared-state dependency",
+    "eyebrow": "003 / shared state order",
+    "title": "Shared state contamination across sibling suites.",
+    "summary": "Isolated order execution eliminated failures (100% -> 0%). The flakiness is caused by test-order execution or shared module state.",
+    "callout": "Diagnosis: test-order/shared-state dependency.",
+    "verdict": "test-order/shared-state dependency",
+    "confidence": "95%",
+    "rates": {
+      "baseline": "100%",
+      "seed": "100%",
+      "clock": "100%",
+      "order": "0%"
+    },
+    "failure_rate_delta": "−100%",
+    "total_runs": 8,
+    "timestamp": "2026-09-09T10:30:29.763Z"
+  },
+  {
+    "id": "004",
+    "test_id": "fixture-004",
+    "name": "environment-flaky",
+    "file": "fixtures/environment-flaky.test.js",
+    "category": "environment-dependent, flag for manual review",
+    "eyebrow": "004 / environment flaky",
+    "title": "Ephemeral service degradation under host volatility.",
+    "summary": "None of the four controlled conditions (fixed seed, frozen clock, isolated order) stabilized the test. Baseline failure rate was 50% and failures persisted across all controls. The failure is environment-dependent (external network, host state, or hardware). Flagged for manual review.",
+    "callout": "Diagnosis: environment-dependent, flag for manual review.",
+    "verdict": "environment-dependent, flag for manual review",
+    "confidence": "90%",
+    "rates": {
+      "baseline": "50%",
+      "seed": "50%",
+      "clock": "50%",
+      "order": "50%"
+    },
+    "failure_rate_delta": "0%",
+    "total_runs": 8,
+    "timestamp": "2026-09-09T10:30:38.380Z"
+  }
+]
