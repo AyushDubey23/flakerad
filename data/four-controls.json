@@ -3,7 +3,7 @@
     "id": "seed",
     "label": "fixed seed",
     "description": "same random inputs",
-    "delta": "−50%"
+    "delta": "−75%"
   },
   {
     "id": "clock",

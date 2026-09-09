@@ -37,6 +37,7 @@ export interface DiagnosisResult {
   attributedCause: FlakeCause
   confidence: number
   explanation: string
+  remediation?: string
   deltas: Record<FlakeCondition, number>
   isFastMode: boolean
   isSafeMode: boolean

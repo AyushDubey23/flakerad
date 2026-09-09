@@ -6,6 +6,13 @@
 A pass is not a reason. Flakerad finds the *why* behind the flake.
 
 <br/>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/flakerad"><img src="https://img.shields.io/npm/v/flakerad.svg?style=flat-square&color=4F9C8C" alt="npm version" /></a>
+  <a href="https://github.com/AyushDubey23/flakerad/actions"><img src="https://img.shields.io/github/actions/workflow/status/AyushDubey23/flakerad/ci.yml?branch=main&style=flat-square&label=ci" alt="CI Status" /></a>
+  <a href="https://github.com/AyushDubey23/flakerad/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-7B7290.svg?style=flat-square" alt="License: MIT" /></a>
+</p>
+
 <br/>
 
 ```bash

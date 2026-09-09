@@ -7,19 +7,20 @@
     "category": "non-deterministic input",
     "eyebrow": "001 / random input",
     "title": "Same test, different random.",
-    "summary": "A fixed seed collapsed the failure rate from 50% to 0%. The flakiness is caused by non-deterministic random inputs.",
+    "summary": "A fixed seed collapsed the failure rate from 75% to 0%. The flakiness is caused by non-deterministic random inputs.",
     "callout": "Diagnosis: non-deterministic input.",
+    "remediation": "Seed random generators explicitly (e.g. faker.seed(1234)) or mock Math.random using jest.spyOn(Math, 'random').mockReturnValue(...).",
     "verdict": "non-deterministic input",
     "confidence": "95%",
     "rates": {
-      "baseline": "50%",
+      "baseline": "75%",
       "seed": "0%",
-      "clock": "88%",
-      "order": "100%"
+      "clock": "75%",
+      "order": "75%"
     },
-    "failure_rate_delta": "−50%",
+    "failure_rate_delta": "−75%",
     "total_runs": 8,
-    "timestamp": "2026-09-09T10:30:16.508Z"
+    "timestamp": "2026-09-09T12:19:43.571Z"
   },
   {
     "id": "002",
@@ -31,17 +32,18 @@
     "title": "The callback arrived before the assertion.",
     "summary": "Freezing the clock eliminated failures (100% -> 0%). The flakiness is caused by timing sensitivity or asynchronous race conditions.",
     "callout": "Diagnosis: timing/race condition.",
+    "remediation": "Replace arbitrary setTimeout/sleep with condition-based polling (e.g. waitFor()) or explicit event promises.",
     "verdict": "timing/race condition",
     "confidence": "95%",
     "rates": {
       "baseline": "100%",
       "seed": "100%",
       "clock": "0%",
-      "order": "100%"
+      "order": "88%"
     },
     "failure_rate_delta": "−100%",
     "total_runs": 8,
-    "timestamp": "2026-09-09T10:30:23.488Z"
+    "timestamp": "2026-09-09T12:19:50.895Z"
   },
   {
     "id": "003",
@@ -53,6 +55,7 @@
     "title": "Shared state contamination across sibling suites.",
     "summary": "Isolated order execution eliminated failures (100% -> 0%). The flakiness is caused by test-order execution or shared module state.",
     "callout": "Diagnosis: test-order/shared-state dependency.",
+    "remediation": "Isolate module singletons and clean up shared global state in beforeEach/afterEach hooks.",
     "verdict": "test-order/shared-state dependency",
     "confidence": "95%",
     "rates": {
@@ -63,7 +66,7 @@
     },
     "failure_rate_delta": "−100%",
     "total_runs": 8,
-    "timestamp": "2026-09-09T10:30:29.763Z"
+    "timestamp": "2026-09-09T12:19:57.334Z"
   },
   {
     "id": "004",
@@ -75,6 +78,7 @@
     "title": "Ephemeral service degradation under host volatility.",
     "summary": "None of the four controlled conditions (fixed seed, frozen clock, isolated order) stabilized the test. Baseline failure rate was 50% and failures persisted across all controls. The failure is environment-dependent (external network, host state, or hardware). Flagged for manual review.",
     "callout": "Diagnosis: environment-dependent, flag for manual review.",
+    "remediation": "Check external network latency, database connection pools, or local port collisions. Mock external service dependencies.",
     "verdict": "environment-dependent, flag for manual review",
     "confidence": "90%",
     "rates": {
@@ -85,6 +89,6 @@
     },
     "failure_rate_delta": "0%",
     "total_runs": 8,
-    "timestamp": "2026-09-09T10:30:38.380Z"
+    "timestamp": "2026-09-09T12:20:10.577Z"
   }
 ]

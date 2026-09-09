@@ -167,6 +167,14 @@ export const TerminalUI: React.FC<TerminalUIProps> = ({
           <Box marginBottom={1}>
             <Text color="white">{diagnosis.explanation}</Text>
           </Box>
+          {diagnosis.remediation && (
+            <Box marginBottom={1}>
+              <Text color="cyan" bold>
+                Remediation:{' '}
+              </Text>
+              <Text color="gray">{diagnosis.remediation}</Text>
+            </Box>
+          )}
           <Box flexDirection="column" marginTop={1}>
             <Text color="gray" bold>
               Failure Rates by Condition:

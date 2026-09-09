@@ -274,6 +274,7 @@ async function generateData() {
       title: f.title,
       summary: diag.explanation,
       callout: `Diagnosis: ${diag.attributedCause}.`,
+      remediation: diag.remediation,
       verdict: diag.attributedCause,
       confidence: `${Math.round(diag.confidence * 100)}%`,
       rates: {

@@ -133,6 +133,9 @@ export async function diagnoseCommand(
     console.log(`Verdict: ${diagnosis.attributedCause.toUpperCase()}`)
     console.log(`Confidence: ${Math.round(diagnosis.confidence * 100)}%`)
     console.log(`Explanation: ${diagnosis.explanation}`)
+    if (diagnosis.remediation) {
+      console.log(`Remediation: ${diagnosis.remediation}`)
+    }
     console.log('Failure Rates:')
     console.log(`  - Baseline:       ${Math.round(diagnosis.baselineFailureRate * 100)}%`)
     console.log(`  - Fixed Seed:     ${Math.round(diagnosis.conditionSummaries.seed.failureRate * 100)}%`)

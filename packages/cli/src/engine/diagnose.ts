@@ -32,6 +32,19 @@ const CONDITION_METADATA: Record<FlakeCondition, { label: string; description: s
   order: { label: 'isolated order', description: 'one test, no neighbors' }
 }
 
+export const REMEDIATION_ADVICE: Record<FlakeCause, string> = {
+  'non-deterministic input':
+    'Seed random generators explicitly (e.g. faker.seed(1234)) or mock Math.random using jest.spyOn(Math, \'random\').mockReturnValue(...).',
+  'timing/race condition':
+    'Replace arbitrary setTimeout/sleep with condition-based polling (e.g. waitFor()) or explicit event promises.',
+  'test-order/shared-state dependency':
+    'Isolate module singletons and clean up shared global state in beforeEach/afterEach hooks.',
+  'environment-dependent, flag for manual review':
+    'Check external network latency, database connection pools, or local port collisions. Mock external service dependencies.',
+  'no-flakiness-observed':
+    'Test showed no flakiness across all reruns. Verify the reproduction pattern or increase rerun count.'
+}
+
 export async function runCondition(
   runner: RunnerAdapter,
   condition: FlakeCondition,
@@ -148,6 +161,7 @@ export async function diagnoseTest(
       attributedCause: 'no-flakiness-observed',
       confidence: 1.0,
       explanation: `Test passed 100% of ${reruns} baseline runs. No intermittent failure was observed.`,
+      remediation: REMEDIATION_ADVICE['no-flakiness-observed'],
       deltas: { baseline: 0, seed: 0, clock: 0, order: 0 },
       isFastMode,
       isSafeMode,
@@ -244,6 +258,7 @@ export async function diagnoseTest(
     attributedCause,
     confidence,
     explanation,
+    remediation: REMEDIATION_ADVICE[attributedCause],
     deltas,
     isFastMode,
     isSafeMode,

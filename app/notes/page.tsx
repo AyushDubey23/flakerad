@@ -21,6 +21,11 @@ export default function NotesPage() {
                     {note.summary}
                   </p>
                   <Callout>{note.callout}</Callout>
+                  {'remediation' in note && note.remediation && (
+                    <p className="mt-4 font-mono text-xs leading-relaxed text-muted-foreground/80">
+                      <span className="text-[var(--teal)]">remediation:</span> {note.remediation}
+                    </p>
+                  )}
                 </div>
               </article>
             </Reveal>

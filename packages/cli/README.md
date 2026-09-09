@@ -1,5 +1,9 @@
 # flakerad
 
+[![npm version](https://img.shields.io/npm/v/flakerad.svg?style=flat-square&color=4F9C8C)](https://www.npmjs.com/package/flakerad)
+[![CI](https://img.shields.io/github/actions/workflow/status/AyushDubey23/flakerad/ci.yml?branch=main&style=flat-square&label=ci)](https://github.com/AyushDubey23/flakerad/actions)
+[![License: MIT](https://img.shields.io/badge/license-MIT-7B7290.svg?style=flat-square)](LICENSE)
+
 > A controlled diagnostic instrument for flaky tests.  
 > Built and created by **Ayush Dubey**.
 
