@@ -10,6 +10,7 @@ A pass is not a reason. Flakerad finds the *why* behind the flake.
 <p align="center">
   <a href="https://www.npmjs.com/package/flakerad"><img src="https://img.shields.io/npm/v/flakerad.svg?style=flat-square&color=4F9C8C" alt="npm version" /></a>
   <a href="https://github.com/AyushDubey23/flakerad/actions"><img src="https://img.shields.io/github/actions/workflow/status/AyushDubey23/flakerad/ci.yml?branch=main&style=flat-square&label=ci" alt="CI Status" /></a>
+  <a href="https://drive.google.com/file/d/1mD5BZMORi_Ru9aSe7_z2TSSK1IydWnub/view?usp=sharing"><img src="https://img.shields.io/badge/docs-technical%20documentation-D97757.svg?style=flat-square" alt="Technical Documentation" /></a>
   <a href="https://github.com/AyushDubey23/flakerad/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-7B7290.svg?style=flat-square" alt="License: MIT" /></a>
 </p>
 
@@ -148,6 +149,18 @@ flakerad/
 ## contributing
 
 Found a genuinely flaky test in the wild that Flakerad misdiagnosed? That's the most valuable bug report there is — open an issue with the test and the four-run output, and it may end up as the next fixture.
+
+<br/>
+
+## technical documentation
+
+For an in-depth architecture breakdown, causal inference design, and algorithmic specification:
+
+<p>
+  <a href="https://drive.google.com/file/d/1mD5BZMORi_Ru9aSe7_z2TSSK1IydWnub/view?usp=sharing">
+    <img src="https://img.shields.io/badge/technical%20documentation-view%20spec%20%E2%86%92-D97757?style=for-the-badge" alt="Technical Documentation" />
+  </a>
+</p>
 
 <br/>
 
