@@ -1,6 +1,6 @@
 {
   "name": "flakerad",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A controlled diagnostic instrument for flaky tests by Ayush Dubey",
   "author": "Ayush Dubey",
   "license": "MIT",

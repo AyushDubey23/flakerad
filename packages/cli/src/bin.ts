@@ -23,7 +23,7 @@ const program = new Command()
 program
   .name('flakerad')
   .description('A controlled diagnostic instrument for flaky tests by Ayush Dubey')
-  .version('0.1.0')
+  .version('0.2.0')
 
 program
   .command('init')
