@@ -16,6 +16,14 @@ Flakerad reruns a failing test under four controlled conditions:
 
 Whichever condition drops the failure rate to zero while baseline fails intermittently is the attributed root cause.
 
+## Actionable Remediation Guidance (v0.2.0+)
+
+Flakerad pairs every causal diagnosis with actionable engineering remedies:
+- **Non-deterministic input**: Seed random generators explicitly (`faker.seed(1234)`) or mock `Math.random` via `jest.spyOn(Math, 'random')`.
+- **Timing / race condition**: Replace arbitrary `setTimeout` sleeps with condition-based polling (`waitFor()`) or explicit event promises.
+- **Test-order / shared-state**: Isolate module singletons and clean up shared global state in `beforeEach`/`afterEach` hooks.
+- **Environment-dependent**: Check external network latency, database connection pools, or local port collisions. Mock external service dependencies.
+
 ## Quick Start
 
 ```bash

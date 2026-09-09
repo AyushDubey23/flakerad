@@ -39,12 +39,12 @@ Flakerad reruns a failing test under four controlled conditions — one variable
 
 Each run changes exactly one thing. Whichever control turns a failing test into a passing one is your root cause.
 
-| # | Control | What it holds constant | If this fixes it → |
-|---|---|---|---|
-| 01 | **baseline** | nothing — the honest first run | *(reference point)* |
-| 02 | **fixed seed** | `Math.random()` and seeded libs (faker, chance) | **non-deterministic input** |
-| 03 | **frozen clock** | `Date.now()`, timers, intervals | **timing / race condition** |
-| 04 | **isolated order** | shared module state between tests | **test-order dependency** |
+| # | Control | What it holds constant | If this fixes it → | Actionable Remediation (v0.2.0+) |
+|---|---|---|---|---|
+| 01 | **baseline** | nothing — the honest first run | *(reference point)* | Run controls to isolate the root cause |
+| 02 | **fixed seed** | `Math.random()` and seeded libs (faker, chance) | **non-deterministic input** | Seed random generators (`faker.seed(1234)`) or mock `Math.random` |
+| 03 | **frozen clock** | `Date.now()`, timers, intervals | **timing / race condition** | Replace `setTimeout` with condition polling (`waitFor()`) |
+| 04 | **isolated order** | shared module state between tests | **test-order dependency** | Isolate singletons & reset state in `beforeEach`/`afterEach` |
 
 If none of the four resolve it, Flakerad doesn't guess — it flags the test as environment-dependent and hands it back for a human to look at. Abstaining honestly is a feature, not a gap.
 
@@ -75,11 +75,13 @@ $ flakerad watch "user session should refresh once"
   ↻ frozen clock    ▓▓▓▓▓▓▓▓▓▓  10/10 runs   3 failed   70% pass
   ↻ isolated order  ▓▓▓▓▓▓▓▓▓▓  10/10 runs   3 failed   70% pass
 
-  ┌─────────────────────────────────────────────┐
-  │ diagnosis: non-deterministic input          │
-  │ fixed seed dropped the failure rate to 0%   │
-  │ confidence: high (Δ = −40pp vs baseline)    │
-  └─────────────────────────────────────────────┘
+  ┌────────────────────────────────────────────────────────────────────────────┐
+  │ DIAGNOSTIC VERDICT: NON-DETERMINISTIC INPUT                                │
+  │ Confidence: 95% | Baseline failure rate: 40%                               │
+  │ A fixed seed collapsed the failure rate from 40% to 0%.                    │
+  │ Remediation: Seed random generators explicitly (e.g. faker.seed(1234))     │
+  │              or mock Math.random using jest.spyOn(Math, 'random')...       │
+  └────────────────────────────────────────────────────────────────────────────┘
 
   → flakerad history --export json
 ```
