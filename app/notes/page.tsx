@@ -1,3 +1,32 @@
 import { Callout, Header, PageShell, Reveal } from '@/components/flakerad'
+import fieldNotes from '@/data/field-notes.json'
 
-export default function NotesPage() { return <PageShell><main><Header eyebrow="field notes / case log" title="The flake leaves a trail." intro="Short reports from the moment a probabilistic failure becomes an inspectable system." /><div className="mx-auto max-w-4xl space-y-16 px-6 pb-28 md:px-10"><Reveal delay={.05}><article className="grid gap-8 border-t border-border pt-8 md:grid-cols-[.3fr_1fr]"><p className="mono-label">004 / race condition</p><div><h2 className="font-serif text-4xl">The callback arrived before the assertion.</h2><p className="mt-5 max-w-xl font-serif text-lg leading-8 text-muted-foreground">Baseline failed 7 of 20 times. Freezing the clock changed nothing. Isolating order changed everything. The test was not timing-sensitive; it was neighbor-sensitive.</p><Callout>Diagnosis: order-dependency, not “just a slow CI run.”</Callout></div></article></Reveal><Reveal delay={.12}><article className="grid gap-8 border-t border-border pt-8 md:grid-cols-[.3fr_1fr]"><p className="mono-label">003 / input drift</p><div><h2 className="font-serif text-4xl">Same test, different random.</h2><p className="mt-5 max-w-xl font-serif text-lg leading-8 text-muted-foreground">A fixed seed collapsed the failure rate from 31% to 0%. The useful finding was not the green build. It was the input that made the path reproducible.</p><Callout>Diagnosis: non-deterministic input with a recoverable seed.</Callout></div></article></Reveal></div></main></PageShell> }
+export default function NotesPage() {
+  return (
+    <PageShell>
+      <main>
+        <Header
+          eyebrow="field notes / case log"
+          title="The flake leaves a trail."
+          intro="Short reports from the moment a probabilistic failure becomes an inspectable system."
+        />
+        <div className="mx-auto max-w-4xl space-y-16 px-6 pb-28 md:px-10">
+          {fieldNotes.map((note, idx) => (
+            <Reveal key={note.id} delay={0.05 + idx * 0.07}>
+              <article className="grid gap-8 border-t border-border pt-8 md:grid-cols-[.3fr_1fr]">
+                <p className="mono-label">{note.eyebrow}</p>
+                <div>
+                  <h2 className="font-serif text-4xl">{note.title}</h2>
+                  <p className="mt-5 max-w-xl font-serif text-lg leading-8 text-muted-foreground">
+                    {note.summary}
+                  </p>
+                  <Callout>{note.callout}</Callout>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </main>
+    </PageShell>
+  )
+}
